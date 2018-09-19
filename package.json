@@ -1,0 +1,24 @@
+{
+  "name": "node_alarm",
+  "version": "1.0.0",
+  "description": "cpustejovsky's alarm project with Node.JS",
+  "main": "alarm.js",
+  "dependencies": {
+    "audio-loader": "^1.0.3",
+    "audio-play": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cpustejovsky/alarm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cpustejovsky/alarm/issues"
+  },
+  "homepage": "https://github.com/cpustejovsky/alarm#readme"
+}
