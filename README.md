@@ -23,9 +23,5 @@ Keep playing the songs until the user submits the input:
         "I am awake and out of bed and intend to have a good day by the Grace of God"
 ## What's needed:
 
-To git gud with asynchronous programming because of all the waiting this will have to do.
-Basically, how do I make JavaScript function wait?
-
-I'll need to write up a function that runs before it even asks for user-input
-    Check for .mp3s in /mp3s and push them into var randomlySelectedArray[]
-
+1) Finish up NodeJS introduction
+2) Play around with React and [ReactPlayer](https://www.npmjs.com/package/react-player).

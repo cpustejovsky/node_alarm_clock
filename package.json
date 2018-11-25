@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/cpustejovsky/alarm/issues"
   },
-  "homepage": "https://github.com/cpustejovsky/alarm#readme"
+  "homepage": "https://github.com/cpustejovsky/alarm#readme",
+  "dependencies": {}
 }
