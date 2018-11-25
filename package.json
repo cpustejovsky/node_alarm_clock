@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "description": "cpustejovsky's alarm project with Node.JS",
   "main": "mp3Player.js",
-  "dependencies": {
-    "audio-loader": "^1.0.3",
-    "audio-play": "^2.2.0",
-    "lame": "^1.2.4",
-    "moment": "^2.22.2",
-    "pcm-volume": "^1.0.0"
-  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
