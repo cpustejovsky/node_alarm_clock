@@ -1,25 +1,29 @@
-"use strict"
-/*  STRATEGY
-STEP ONE
-    Based on the list of mp3s within the mp3 folder, the script will play them in order.
+const spawn = require('child_process').spawn;
+const brownNoise = 'mp3/brown-noise.mp3';
+const alarm = 'mp3/yes-roundabount.mp3';
 
-/*
-Generates random list between 1 and the length of the provided audio list.
-The random list will create the order in which the mp3 files will be played.
-*/
 
-let myaudiolist = [1,2,3,4]; //sample data
+fuzzyNoise = spawn('mplayer', ['-slave', brownNoise]);
 
-function genereteRandomList (audiolist){
-    let orderlist = [];
-    let maxlength = audiolist.length + 1;
-    while (orderlist.length < audiolist.length) {
-        let randomNumber = Math.floor(Math.random() * (+maxlength - 1)) + 1;
-        if (randomNumber !== 0 && randomNumber !== orderlist[3] && randomNumber !== orderlist[2] && randomNumber !== orderlist[1] && randomNumber !== orderlist[0]) {
-            orderlist.push(randomNumber);
-        }
+const time = process.argv[2].split(':');
+
+function checkTime() {
+    const now = new Date();
+
+    if (now.getUTCHours() >= time[0] && now.getUTCMinutes() >= time[1]) {
+        fuzzyNoise.kill();
+        fuzzyNoise.on('exit', function () {
+            console.log('fuzzy noise exited.');
+        });
+        alarmClock = spawn('mplayer', ['-slave', alarm]);
+        alarmClock.on('exit', function () {
+            console.log('EXIT.');
+        });
+    } else {
+        setTimeout(checkTime, 1000 * 30);
     }
-    return orderlist
 }
 
-console.log(genereteRandomList(myaudiolist));
+console.log("Setting alarm for: " + time.join(":"));
+
+checkTime();

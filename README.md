@@ -1,27 +1,10 @@
 # Node Alarm Clock
 
-Here is the scope of the project: 
+## Current State
+* Using child_process.spawn to run mplayer to play a brown noise mp3 file and then close that process and run a new mplayer process playing a song.
 
-## Step One: User Input
-Ask them what time they want to wake up.
-    Verify that they entered a time that the computer understands. Make sure the program can convert things like 5:00am into something useful.
-## Step Two: Present Options
-Tell them what times they would need to sleep in order to have:
-    9 hours of sleep
-    7.5 hours of sleep
-    6 hours of sleep
-    4.5 hours of sleep (include a warning not to do this)
-## Step Three:
- Determine the amount of time between NOW/PRESENT and the time indicated by user input
-    inputTime - presentTime = programingRunTime
-## Step Four:
-Begin playing soft brown noise or some other kind of fuzzy noise for programmingRunTime - 15 minutes
-    Wait for 15 minutes once brown noise finished playing (after programmingRunTime - 15 minutes)
-    After programmingRunTime, play a random selection of music from an array.
-## Step Five:
-Keep playing the songs until the user submits the input:
-        "I am awake and out of bed and intend to have a good day by the Grace of God"
-## What's needed:
-
-1) Finish up NodeJS introduction
-2) Play around with React and [ReactPlayer](https://www.npmjs.com/package/react-player).
+## Next Steps
+1. Use Commander for better command-line input
+2. randomize song selection
+3. pick playlists to play a certain day
+4. work with Spotify API to activate and play Spotify at wake up

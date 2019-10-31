@@ -2,7 +2,7 @@
   "name": "node_alarm",
   "version": "1.0.0",
   "description": "cpustejovsky's alarm project with Node.JS",
-  "main": "mp3Player.js",
+  "main": "alarm.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
