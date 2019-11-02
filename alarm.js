@@ -1,7 +1,8 @@
 const spawn = require('child_process').spawn;
 const moment = require('moment');
 const prompts = require('prompts');
-//TODO: Make use of prompts and moment!!!
+//TODO: Make use of prompts
+//TODO: Test with lofi hiphop and something else at the office and kill two birds with one stone
 const brownNoise = 'mp3/brown-noise.mp3';
 const alarm = 'mp3/yes-roundabout.mp3';
 
