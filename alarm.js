@@ -1,6 +1,6 @@
 const spawn = require('child_process').spawn;
 const moment = require('moment');
-const prompts = require('prompts');
+// const prompts = require('prompts');
 //TODO: Make use of prompts
 //TODO: Test with lofi hiphop and something else at the office and kill two birds with one stone
 const brownNoise = 'mp3/brown-noise.mp3';
@@ -19,7 +19,7 @@ let sleep = true;
 function checkTime() {
     if (sleep) {
         var now = moment();
-        if (now.hours() >= time[0] && now.minutes() >= time[1]) {
+        if (now.hours() >= time[0] && now.minutes() >= time[1] && now.format("A") === "AM") {
             wakeUp()
         } else {
             console.log(now.format("LTS"));
