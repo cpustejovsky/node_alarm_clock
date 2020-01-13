@@ -1,8 +1,7 @@
 const spawn = require("child_process").spawn;
 const moment = require("moment");
 const prompts = require("prompts");
-//TODO: Make use of prompts
-//TODO: Test with lofi hiphop and something else at the office and kill two birds with one stone
+//TODO: make use of https://github.com/noodny/mplayer
 const brownNoise = "mp3/brown-noise.mp3";
 const alarm = "mp3/yes-roundabout.mp3";
 
@@ -46,7 +45,9 @@ const setWakeUpTime = async function() {
   const response = await prompts(questions);
   if (response) {
     playFuzzyNoise();
-    console.log(`Setting alarm for ${response.hour}:${response.minute} ${response.meridiem}`);
+    console.log(
+      `Setting alarm for ${response.hour}:${response.minute} ${response.meridiem}`
+    );
     checkTime(response);
   }
 };
@@ -55,15 +56,16 @@ let sleep = true;
 
 function checkTime(time) {
   if (sleep) {
-    var now = moment();
+    let now = moment();
     if (
       Number(now.format("hh")) >= time.hour &&
       Number(now.format("mm")) >= time.minute &&
       now.format("A") === time.meridiem
     ) {
-      wakeUp();
+      if (Number(now.format("hh")) !== 12 && now.format("A") === "AM") {
+        wakeUp();
+      }
     } else {
-      console.log(now.format("LTS"));
       setTimeout(function() {
         checkTime(time);
       }, 1000);
