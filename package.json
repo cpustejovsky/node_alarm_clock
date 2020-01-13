@@ -19,6 +19,7 @@
   "homepage": "https://github.com/cpustejovsky/alarm#readme",
   "dependencies": {
     "moment": "^2.24.0",
+    "mplayer": "^2.1.0",
     "prompts": "^2.2.1"
   }
 }
