@@ -1,8 +1,14 @@
 const spawn = require("child_process").spawn;
 const moment = require("moment");
 const prompts = require("prompts");
+const fs = require("fs");
+const Randomizer = require("./randomizer");
+// const alarm = "mp3/alarms/mr_blue_sky.mp3";
 const brownNoise = "mp3/brown-noise.mp3";
-const alarm = "mp3/alarms/mr_blue_sky.mp3";
+console.clear();
+const data = fs.readdirSync("./mp3/alarms");
+let alarmMp3s = Randomizer.randomizeArr(data).map(item => `mp3/alarms/${item}`);
+
 let sleep = true;
 const playFuzzyNoise = () => {
   fuzzyNoise = spawn("mplayer", ["-slave", brownNoise]);
@@ -71,13 +77,13 @@ function checkTime(time) {
     }
   }
 }
-
-function wakeUp() {
+function wakeUp(mp3Arr) {
   console.log("fuzzy noise should exit");
-  fuzzyNoise.kill();
+  // fuzzyNoise.kill();
   sleep = false;
   console.log("wake up!");
-  alarmClock = spawn("mplayer", ["-slave", alarm]);
+
+  alarmClock = spawn("mplayer", ["-slave", alarmMp3s[0]]);
   alarmClock.stdout.on("data", function(data) {
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
@@ -89,7 +95,8 @@ function wakeUp() {
     process.stdout.write("Alarm clock stderr: " + data);
   });
   alarmClock.on("exit", function() {
-    console.log("EXIT.");
+    console.log("Bubye!")
   });
 }
-setWakeUpTime();
+// setWakeUpTime();
+wakeUp(alarmMp3s);

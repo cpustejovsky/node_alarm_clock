@@ -1,7 +1,3 @@
-const log = x => console.log(x);
-
-const inputs = ["A", "B", "C", "D"];
-
 const getUniqueRandInts = arr => {
   let retunArr = [];
   while (retunArr.length < arr.length) {
@@ -27,4 +23,4 @@ const randomizeArr = (arr) => {
   return randomizedArr;
 };
 
-log(randomizeArr(inputs))
+module.exports.randomizeArr = randomizeArr;
