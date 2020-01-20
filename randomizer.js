@@ -1,26 +1,30 @@
 const log = x => console.log(x);
 
-const originalArr = ["A", "B", "C", "D"];
-log(originalArr);
+const inputs = ["A", "B", "C", "D"];
 
 const getUniqueRandInts = arr => {
   let retunArr = [];
   while (retunArr.length < arr.length) {
-    let r = Math.floor(Math.random() *  Math.floor(arr.length));
+    let r = Math.floor(Math.random() * Math.floor(arr.length));
     if (retunArr.indexOf(r) === -1) retunArr.push(r);
   }
   return retunArr;
 };
 
-const uniqueRandIntArr = getUniqueRandInts(originalArr)
-log(uniqueRandIntArr)
-const newArr = originalArr.map((item)=>
-{
-  return {
-        position: uniqueRandIntArr[originalArr.indexOf(item)],
-        data: item
-    }
-}
-);
+const randomizeArr = (arr) => {
+  const uniqueItems = getUniqueRandInts(arr);
+  const positions = arr.map(item => {
+    return {
+      position: uniqueItems[arr.indexOf(item)],
+      data: item
+    };
+  });
 
-log(newArr);
+  let randomizedArr = [];
+  for (let i = 0; i < positions.length; i++) {
+    randomizedArr.splice(positions[i].position, 0, positions[i].data);
+  }
+  return randomizedArr;
+};
+
+log(randomizeArr(inputs))
