@@ -1,9 +1,8 @@
 const spawn = require("child_process").spawn;
 const moment = require("moment");
 const prompts = require("prompts");
-//TODO: make use of https://github.com/noodny/mplayer
 const brownNoise = "mp3/brown-noise.mp3";
-const alarm = "mp3/yes-roundabout.mp3";
+const alarm = "mp3/alarms/mr_blue_sky.mp3";
 let sleep = true;
 const playFuzzyNoise = () => {
   fuzzyNoise = spawn("mplayer", ["-slave", brownNoise]);
@@ -60,13 +59,11 @@ function checkTime(time) {
   if (sleep) {
     let now = moment();
     if (
-      Number(now.format("hh")) >= time.hour &&
-      Number(now.format("mm")) >= time.minute &&
+      Number(now.format("hh")) === time.hour &&
+      Number(now.format("mm")) === time.minute &&
       now.format("A") === time.meridiem
     ) {
-      if (Number(now.format("hh")) !== 12 && now.format("A") === "AM") {
-        wakeUp();
-      }
+      wakeUp();
     } else {
       setTimeout(function() {
         checkTime(time);
@@ -95,5 +92,4 @@ function wakeUp() {
     console.log("EXIT.");
   });
 }
-
 setWakeUpTime();
